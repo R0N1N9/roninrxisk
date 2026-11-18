@@ -1,63 +1,296 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>RoninRxisk</title>
-<meta name="description" content="RoninRxisk: Research efforts, education, and safety practices for people who show up for their communities and the causes they believe in. A RoninSec brand. Coming soon.">
-<meta name="theme-color" content="#121412">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23B03A36'/%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RoninRxISK · Psych Med Harm &amp; PSSD Research</title>
+<meta name="description" content="Independent tracking of psychiatric medication harm and post-SSRI sexual dysfunction (PSSD) research. A RoninSec brand.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&family=Zen+Antique&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Zen+Antique&display=swap">
+<meta name="theme-color" content="#121412">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23B03A36'/%3E%3C/svg%3E">
 <style>
-/* Holding page: one centered column on matte black. Shares the RoninSec palette; RoninRxisk's own accent. */
-:root {
-  color-scheme: dark;
-  --paper: #121412; --paper-2: #1C1F1E; --ink: #DAD6CA; --ink-2: #9A978A; --rule: #2D3230;
-  --accent: #B03A36; --red: #B03A36;
-  --f-display: "Zen Antique", "Hiragino Mincho ProN", Georgia, serif;
-  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-*, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; }
-body {
-  margin: 0; background: var(--paper); color: var(--ink); font: 400 1rem/1.6 var(--f-body);
-  -webkit-font-smoothing: antialiased;
-  display: grid; grid-template-rows: 1fr auto;
-  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-}
-a { color: inherit; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.mono { font-family: var(--f-mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; }
-main { align-self: center; width: 100%; max-width: 44rem; margin-inline: auto; padding-block: 64px; display: grid; gap: 22px; }
-.kicker { color: var(--accent); display: flex; align-items: center; gap: 10px; margin: 0; }
-.kicker::before { content: ""; width: 28px; height: 1px; background: var(--accent); }
-h1 { font: 400 clamp(3rem, 11vw, 6rem)/1 var(--f-display); margin: 0; letter-spacing: .005em; text-wrap: balance; }
-h1 em { font-style: normal; color: var(--accent); }
-p.line { margin: 0; color: var(--ink-2); font-size: 1.15rem; max-width: 34rem; }
-.status { justify-self: start; padding: .3rem .6rem; border: 1px solid var(--red); color: var(--red); border-radius: 2px; }
-.back { justify-self: start; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; font-weight: 500; }
-.back:hover { color: var(--accent); }
-.jp { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--ink-2); display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
-.jp b { font: 400 1.6rem/1 var(--f-display); color: var(--ink); }
-footer { border-top: 1px solid var(--rule); padding-block: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--ink-2); max-width: 72rem; width: 100%; margin-inline: auto; }
+  :root{
+    color-scheme:dark;
+    --bg:#121412; --panel:#1C1F1E; --line:#2D3230; --text:#DAD6CA; --muted:#9A978A;
+    --accent:#B03A36; --accent-soft:rgba(176,58,54,.12); --hi:#C9524D;
+    --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace; --sans:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --display:'Zen Antique','Hiragino Mincho ProN',Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65;font-size:17px}
+  a{color:var(--text);text-decoration-color:var(--accent);text-underline-offset:3px}
+  a:hover{color:var(--hi)}
+  h1,h2,h3{font-family:var(--display);font-weight:400}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:10;background:rgba(18,20,18,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-family:var(--mono);font-weight:600;letter-spacing:.02em;text-decoration:none}
+  .logo span{color:var(--accent)}
+  nav a{font-family:var(--mono);font-size:13px;color:var(--muted);text-decoration:none;margin-left:22px}
+  nav a:hover{color:var(--text)}
+  nav a.blog{color:var(--text);border:1px solid var(--accent);padding:5px 10px;border-radius:4px}
+  @media (max-width:760px){nav a:not(.blog){display:none}}
+  /* hero */
+  .hero{padding:96px 0 72px;border-bottom:1px solid var(--line);background:
+     radial-gradient(800px 300px at 85% 0%,rgba(176,58,54,.10),transparent 70%)}
+  .tag{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--hi)}
+  h1{font-size:clamp(36px,6vw,64px);line-height:1.05;letter-spacing:-.02em;margin:14px 0 22px;max-width:16ch}
+  .lede{font-size:20px;color:var(--muted);max-width:60ch;margin:0 0 32px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;font-family:var(--mono);font-size:14px;padding:12px 18px;border-radius:6px;text-decoration:none;border:1px solid var(--line)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.primary:hover{filter:brightness(1.1);color:#fff}
+  /* sections */
+  section{padding:80px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(26px,3.4vw,36px);letter-spacing:-.01em;margin:8px 0 18px;line-height:1.15}
+  h3{font-size:19px;margin:0 0 8px}
+  p.intro{color:var(--muted);max-width:68ch;margin-top:0}
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:34px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px}
+  .card p{margin:0;color:var(--muted);font-size:15.5px}
+  .card .meta{font-family:var(--mono);font-size:12px;color:var(--hi);margin-bottom:10px;letter-spacing:.06em;text-transform:uppercase}
+  .card a.more{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:13px}
+  ul.sym{columns:2;column-gap:40px;padding-left:18px;color:var(--muted);margin:24px 0 0}
+  ul.sym li{margin-bottom:6px;break-inside:avoid}
+  @media (max-width:640px){ul.sym{columns:1}}
+  /* timeline */
+  .tl{margin-top:34px;border-left:2px solid var(--line);padding-left:28px}
+  .tl .ev{position:relative;margin-bottom:28px}
+  .tl .ev::before{content:"";position:absolute;left:-36px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+  .tl .yr{font-family:var(--mono);font-size:13px;color:var(--hi)}
+  .tl p{margin:2px 0 0;color:var(--muted);max-width:70ch}
+  /* blog band */
+  .blogband{background:var(--accent-soft);border:1px solid rgba(176,58,54,.4);border-radius:12px;padding:36px;display:flex;gap:28px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  .blogband h2{margin:6px 0 8px}
+  .blogband p{margin:0;color:var(--muted);max-width:56ch}
+  /* notice */
+  .notice{border-left:3px solid var(--accent);background:var(--panel);padding:18px 22px;border-radius:0 8px 8px 0;color:var(--muted);font-size:15.5px;margin-top:30px}
+  .notice strong{color:var(--text)}
+  footer{padding:48px 0 64px;color:var(--muted);font-size:14px}
+  footer .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .src{font-size:14px;color:var(--muted)}
+  .src li{margin-bottom:6px}
 </style>
 </head>
 <body>
-<main>
-  <p class="kicker mono">Activism · Advocacy</p>
-  <h1>Ronin<em>Rxisk</em></h1>
-  <p class="line">Research efforts, education, and safety practices for people who show up for their communities and the causes they believe in.</p>
-  <span class="status mono">Coming soon</span>
-  <a class="back" href="https://r0n1n9.github.io/roninsec/">Back to RoninSec <span aria-hidden="true">→</span></a>
-  <div class="jp"><b lang="ja">浪人</b><span class="mono">Masterless, never indifferent</span></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Ronin<span>RxISK</span></a>
+    <nav>
+      <a href="#pssd">What is PSSD</a>
+      <a href="#timeline">Recognition</a>
+      <a href="#research">Research</a>
+      <a href="#tools">Tools</a>
+      <a href="#act">Take action</a>
+      <a class="blog" data-blog href="#blog">RoninSec →</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="hero">
+  <div class="wrap">
+    <div class="tag">// A RoninSec brand · Activism &amp; advocacy</div>
+    <h1>Psychiatric medication harm, tracked like a vulnerability.</h1>
+    <p class="lede">An independent hub following post-SSRI sexual dysfunction (PSSD) and other enduring drug harms — what's known, who's researching it, and how patients can be counted.</p>
+    <div class="btns">
+      <a class="btn primary" href="#research">See active research</a>
+      <a class="btn" href="#tools">Open the research tools</a>
+    </div>
+  </div>
+</div>
+
+<section id="pssd">
+  <div class="wrap">
+    <div class="tag">01 · Overview</div>
+    <h2>What is PSSD?</h2>
+    <p class="intro">Post-SSRI sexual dysfunction is a condition in which sexual side effects of serotonin reuptake inhibitor antidepressants (SSRIs and SNRIs) persist — sometimes for years — after the drug has been stopped. It is most commonly characterised by genital numbness, weak or pleasureless orgasm, loss of libido and erectile dysfunction. Many people also report non-sexual symptoms such as emotional blunting.</p>
+    <ul class="sym">
+      <li>Genital numbness / reduced sensation</li>
+      <li>Weak, muted or pleasureless orgasm</li>
+      <li>Loss of libido</li>
+      <li>Erectile or arousal difficulties</li>
+      <li>Emotional blunting</li>
+      <li>Cognitive changes reported by some patients</li>
+    </ul>
+    <div class="grid">
+      <div class="card">
+        <div class="meta">Related conditions</div>
+        <h3>PFS &amp; PRSD</h3>
+        <p>Similar enduring syndromes are reported after finasteride (post-finasteride syndrome) and isotretinoin (post-retinoid sexual dysfunction). The 2022 diagnostic criteria cover all three, plus PGAD after SRIs.</p>
+      </div>
+      <div class="card">
+        <div class="meta">Open question</div>
+        <h3>How common is it?</h3>
+        <p>Nobody knows yet. Prevalence studies are hard to design, many patients never connect symptoms to a past prescription, and no evidence-based treatment has been established.</p>
+      </div>
+      <div class="card">
+        <div class="meta">Why RoninRxISK</div>
+        <h3>A disclosure problem</h3>
+        <p>A harm that's under-reported, slow to be acknowledged and hard to measure looks a lot like an unpatched vulnerability. RoninRxISK applies the RoninSec mindset: document, verify, disclose.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="tag">02 · Disclosure timeline</div>
+    <h2>From forum reports to regulator labels</h2>
+    <div class="tl">
+      <div class="ev"><div class="yr">1990s–early 2000s</div><h3>Patient reports</h3><p>Accounts of lasting sexual side effects circulate in online communities, where the term "PSSD" emerges.</p></div>
+      <div class="ev"><div class="yr">2006</div><h3>First in the medical literature</h3><p>Case reports by Bahrick and by Csoka &amp; Shipko describe persistent dysfunction after stopping SSRIs.</p></div>
+      <div class="ev"><div class="yr">2011</div><h3>US fluoxetine label</h3><p>US product information for fluoxetine adds a warning that sexual side effects may persist after discontinuation.</p></div>
+      <div class="ev"><div class="yr">2012 onward</div><h3>Lareb reports</h3><p>The Netherlands Pharmacovigilance Centre Lareb begins publishing reports on the condition.</p></div>
+      <div class="ev"><div class="yr">2013</div><h3>DSM-5 acknowledgement</h3><p>DSM-5 notes that SRI-induced sexual dysfunction may, in some cases, persist after the drug is stopped.</p></div>
+      <div class="ev"><div class="yr">2019</div><h3>European Medicines Agency</h3><p>Following a petition with named patient reports, the EMA asks for SSRI/SNRI labels to warn of long-lasting sexual dysfunction after discontinuation.</p></div>
+      <div class="ev"><div class="yr">2022</div><h3>Diagnostic criteria published</h3><p>A multidisciplinary panel led by David Healy publishes criteria for PSSD, PFS, PRSD and post-SRI PGAD in the <em>International Journal of Risk &amp; Safety in Medicine</em>.</p></div>
+      <div class="ev"><div class="yr">2025–2026</div><h3>Funded research &amp; regulator review</h3><p>Dedicated trainee research grants open in Canada, an Australian biological study is announced, and New Zealand's Medicines Adverse Reactions Committee reviews PSSD again in June 2026.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="wrap">
+    <div class="tag">03 · Active efforts</div>
+    <h2>Who is researching PSSD</h2>
+    <p class="intro">A running list of research programmes, funds and advocacy groups. Status changes fast; each card links to its primary source.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="meta">Diagnostics</div>
+        <h3>Healy et al. criteria</h3>
+        <p>Consensus diagnostic criteria for enduring sexual dysfunction after antidepressants, finasteride and isotretinoin — the shared definition for clinicians and studies.</p>
+        <a class="more" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8925105/">Read the paper ↗</a>
+      </div>
+      <div class="card">
+        <div class="meta">Epidemiology</div>
+        <h3>Barriers to measuring prevalence</h3>
+        <p>Healy &amp; Mangin (2024) set out why incidence and prevalence remain unknown and what a workable study would need.</p>
+        <a class="more" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11450419/">Read the paper ↗</a>
+      </div>
+      <div class="card">
+        <div class="meta">Australia</div>
+        <h3>PSSD Network &amp; The Florey</h3>
+        <p>The PSSD Network, an advocacy group formed in 2022, reports a population-based study into biological mechanisms with The Florey in Melbourne, alongside Dr. Melcangi's lab work.</p>
+        <a class="more" href="https://www.pssdnetwork.org/network/june-2026-mid-year-update">June 2026 update ↗</a>
+      </div>
+      <div class="card">
+        <div class="meta">Canada</div>
+        <h3>UBC SHAPE trainee grants</h3>
+        <p>Trainee research grants for Canadian students studying PSSD, described by advocates as the first institutional funding aimed at the condition.</p>
+        <a class="more" href="https://shapehub.ca/shape-trainee-research-grants/">SHAPE Hub ↗</a>
+      </div>
+      <div class="card">
+        <div class="meta">Funding</div>
+        <h3>RxISK Prize &amp; Research Fund</h3>
+        <p>Launched in 2017 as a $100,000 prize for a cure for PSSD, PFS or PRSD; the prize has since been moved into a research fund.</p>
+        <a class="more" href="https://rxisk.org/rxisk-research-fund-and-prize/">RxISK ↗</a>
+      </div>
+      <div class="card">
+        <div class="meta">Regulators</div>
+        <h3>NZ Medsafe / MARC review</h3>
+        <p>New Zealand's Medicines Adverse Reactions Committee took up an updated PSSD review at its 11 June 2026 meeting.</p>
+        <a class="more" href="https://medsafe.govt.nz/committees/marc/reports/206-3.2.3-Update-on-sexual-dysfunction-(post-SSRI-sexual-dysfunction)-following-discontinuation-of-serotonin-reuptake-inhibitors.pdf">MARC report ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="wrap">
+    <div class="tag">04 · RoninSec tools</div>
+    <h2>Open tools for PSSD research</h2>
+    <p class="intro">Software built under the RoninSec banner to make the PSSD evidence base easier to search, measure and act on.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="meta">Evidence map · Python</div>
+        <h3>PSSD Atlas</h3>
+        <p>A living evidence map for PSSD and related post-drug syndromes. It pulls PubMed, Europe PMC preprints, ClinicalTrials.gov and FDA adverse-event (FAERS) data into one report, tags every paper by study design, hypothesis and candidate treatment, and shows where the evidence is thin.</p>
+        <span class="more" style="color:var(--muted)">Coming soon</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="act">
+  <div class="wrap">
+    <div class="tag">05 · Take action</div>
+    <h2>Get counted</h2>
+    <p class="intro">Harms that aren't reported don't exist in the data. If you think a medicine has harmed you, file a report — it's the single most useful thing a patient can do for research.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="meta">United States</div>
+        <h3>FDA MedWatch</h3>
+        <p>Report adverse drug effects directly to the FDA. Patients can file without a doctor.</p>
+        <a class="more" href="https://www.fda.gov/safety/medwatch-fda-safety-information-and-adverse-event-reporting-program">File with MedWatch ↗</a>
+      </div>
+      <div class="card">
+        <div class="meta">International</div>
+        <h3>RxISK side-effect report</h3>
+        <p>An independent drug-safety site that turns your report into a document you can take to your prescriber.</p>
+        <a class="more" href="https://rxisk.org/">RxISK.org ↗</a>
+      </div>
+      <div class="card">
+        <div class="meta">Join a study</div>
+        <h3>Volunteer as a participant</h3>
+        <p>Mechanism studies need both patients and healthy matched controls. Check the research groups above for open enrolment.</p>
+        <a class="more" href="#research">Back to research ↑</a>
+      </div>
+    </div>
+    <div class="notice">
+      <strong>Don't stop or change a medication on your own.</strong> Stopping psychiatric drugs abruptly can cause serious withdrawal effects. Talk to your prescriber about any change. This site is informational and is not medical advice.<br><br>
+      <strong>In crisis?</strong> In the US, call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline), any time.
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap">
+    <div class="blogband">
+      <div>
+        <div class="tag">// part of the Ronin network</div>
+        <h2>RoninRxISK is a RoninSec brand</h2>
+        <p>See the rest of the network, the journal and the RoninSec projects on the main site.</p>
+      </div>
+      <a class="btn primary" data-blog href="#blog">Back to RoninSec →</a>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:none;padding-bottom:20px">
+  <div class="wrap">
+    <div class="tag">Sources</div>
+    <ul class="src">
+      <li>Healy D. et al. (2022). Diagnostic criteria for enduring sexual dysfunction after treatment with antidepressants, finasteride and isotretinoin. <em>Int J Risk Saf Med</em> 33(1):65–76.</li>
+      <li>Healy D., Mangin D. (2024). Post-SSRI sexual dysfunction: barriers to quantifying incidence and prevalence. <em>Epidemiology and Psychiatric Sciences</em>.</li>
+      <li>EMA PRAC (2019) SSRI/SNRI product information update; DSM-5 (2013) p. 449.</li>
+      <li>PSSD Network, June 2026 Mid-Year Update · Medsafe MARC meeting 11 June 2026 · RxISK Research Fund and Prize.</li>
+    </ul>
+  </div>
+</section>
+
 </main>
+
 <footer>
-  <span class="mono">© 2026 RoninRxisk</span>
-  <a class="mono" href="https://r0n1n9.github.io/roninsec/" style="text-decoration:none">A RoninSec brand</a>
+  <div class="wrap row">
+    <div><span class="logo">Ronin<span style="color:var(--accent)">RxISK</span></span> · Psych med harm &amp; PSSD research · a RoninSec brand<br><span style="font-size:13px">Independent project — not affiliated with RxISK.org.</span></div>
+    <div>Informational only — not medical advice. Last reviewed November 2026.</div>
+  </div>
 </footer>
+
+<script>
+  // Where the "RoninSec" links point: the Ronin network section of the main site
+  const BLOG_URL = "https://r0n1n9.github.io/roninsec/#network";
+  if (BLOG_URL) {
+    document.querySelectorAll("[data-blog]").forEach(a => { a.href = BLOG_URL; });
+  }
+</script>
 </body>
 </html>

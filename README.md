@@ -1,6 +1,8 @@
 # RoninRxisk
 
-Activism and advocacy. Holding page for now.
+Activism and advocacy: psychiatric medication harm and post-SSRI sexual dysfunction (PSSD) research. Tracks what is known, who is researching it, RoninSec research tools, and how patients can report harms.
+
+Independent project, not affiliated with RxISK.org.
 
 A [RoninSec](https://r0n1n9.github.io/roninsec/) brand. Live at https://r0n1n9.github.io/roninrxisk/
 
